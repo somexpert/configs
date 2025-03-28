@@ -1,0 +1,8 @@
+[user]
+	name = Gio Gottardi
+	email = manuelgottardi@unt.edu
+[core]
+	editor = nvim
+        autocrlf = input
+[stash]
+	showPatch = true
