@@ -199,17 +199,6 @@ iabbrev coutn count
 iabbrev improt import
 iabbrev calss class
 
-" Add some quick inserts
-iabbrev git_me https://github.com/somexpert
-iabbrev git_mark https://github.com/vphill
-iabbrev git_lauren https://github.com/ldko
-iabbrev git_damon https://github.com/damonkelley
-iabbrev git_jasone https://github.com/jason-ellis
-iabbrev git_jasont https://github.com/jthomale
-iabbrev git_will https://github.com/whicks1
-iabbrev git_joey https://github.com/yeahdef
-iabbrev git_kurt https://github.com/kurtnordstrom
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""TESTING"""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
