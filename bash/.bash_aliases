@@ -2,6 +2,10 @@
 
 alias sudo='sudo '
 alias ssh-start='eval "$(ssh-agent)" ; ssh-add'
+if command -v nvim 2>&1 >/dev/null
+then
+	alias vim=nvim
+fi
 alias aliases='vim ~/.bash_aliases ; source ~/.bash_aliases'
 alias ls='ls --color=auto'
 alias la='ls -Alh'

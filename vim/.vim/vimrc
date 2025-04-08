@@ -3,61 +3,73 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set up the vim-plug plugin manager
-call plug#begin('~/.vim/plugged')
+if filereadable('~/.vim/plugged')
+	call plug#begin('~/.vim/plugged')
 
-Plug 'morhetz/gruvbox'
-Plug 'damonkelley/vim-python-syntax'
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-commentary'
-Plug 'airblade/vim-gitgutter'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'tpope/vim-surround'
-Plug 'junegunn/vim-peekaboo'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf'}
-Plug 'junegunn/fzf.vim'
-Plug 'unblevable/quick-scope'
-Plug 'justinmk/vim-sneak'
-Plug 'nvie/vim-flake8'
-Plug 'vim-syntastic/syntastic'
+	Plug 'morhetz/gruvbox'
+	Plug 'damonkelley/vim-python-syntax'
+	Plug 'tpope/vim-unimpaired'
+	Plug 'tpope/vim-commentary'
+	Plug 'airblade/vim-gitgutter'
+	Plug 'tpope/vim-fugitive'
+	Plug 'tpope/vim-rhubarb'
+	Plug 'tpope/vim-surround'
+	Plug 'junegunn/vim-peekaboo'
+	Plug 'junegunn/fzf', { 'dir': '~/.fzf'}
+	Plug 'junegunn/fzf.vim'
+	Plug 'unblevable/quick-scope'
+	Plug 'justinmk/vim-sneak'
+	Plug 'nvie/vim-flake8'
+	Plug 'vim-syntastic/syntastic'
 
-if has('nvim')
-    Plug 'Shougo/deoplete.nvim'
-    Plug 'zchee/deoplete-jedi'
-    Plug 'wokalski/autocomplete-flow'
+	if has('nvim')
+	Plug 'Shougo/deoplete.nvim'
+	Plug 'zchee/deoplete-jedi'
+	Plug 'wokalski/autocomplete-flow'
+	endif
+
+	call plug#end()
+
+	" Set deoplete to auto start for auto-completion
+	if has('nvim')
+	let g:deoplete#enable_at_startup = 1
+	endif
+
+
+	let g:syntastic_mode_map = {
+	\ "mode": "passive",
+	\ "active_filetypes": [],
+	\ "passive_filetypes": [] }
+	let g:syntastic_always_populate_loc_list = 1
+	let g:syntastic_auto_loc_list = 1
+	let g:syntastic_python_checkers = ["flake8"]
+
+	" Set the Python intepreter locations (so neovim works fine within virtualenvs
+	let g:python_host_prog = "/usr/bin/python2.7"
+	let g:python3_host_prog = "/usr/bin/python3"
+
+	" Sets VIM to load plugins from .vim/plug-ins and .vimrc on startup
+	set loadplugins
+
+	filetype plugin on
+
+	" Set status line with fugitive git branch indicator
+	set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+	set statusline+=%#warningmsg#
+	set statusline+=%{SyntasticStatuslineFlag()}
+	set statusline+=%*
+
+	colorscheme gruvbox
 endif
-
-call plug#end()
-
-" Set deoplete to auto start for auto-completion
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-endif
-
-
-let g:syntastic_mode_map = {
-    \ "mode": "passive",
-    \ "active_filetypes": [],
-    \ "passive_filetypes": [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_python_checkers = ["flake8"]
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""GENERAL SETTINGS"""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Set the Python intepreter locations (so neovim works fine within virtualenvs
-let g:python_host_prog = "/usr/bin/python2.7"
-let g:python3_host_prog = "/usr/bin/python3"
 
 " Set VI compatibility off. Allows full VIM feature set.
 set nocompatible
 
-" Sets VIM to load plugins from .vim/plug-ins and .vimrc on startup
-set loadplugins
-
-filetype plugin on
 
 " Show crosshair highlighting (line row and column)
 set cursorline
@@ -99,14 +111,7 @@ set autoindent
 set ignorecase
 set smartcase
 
-" Set status line with fugitive git branch indicator
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 set t_Co=256
-colorscheme gruvbox
 set background=dark
 
 if has('nvim')
@@ -159,20 +164,15 @@ endif
 
 " Sets certain remaps
 inoremap jk <esc>
-inoremap <esc> <nop>
 
 " Sets the leader key to space
 let mapleader = "\<Space>"
 
 "Sets <leader>[hjkl] to jump to the split in the direction specified
 nnoremap <leader>h <c-w>h
-nnoremap <c-w>h <nop>
 nnoremap <leader>j <c-w>j
-nnoremap <c-w>j <nop>
 nnoremap <leader>k <c-w>k
-nnoremap <c-w>k <nop>
 nnoremap <leader>l <c-w>l
-nnoremap <c-w>l <nop>
 
 " Sets <leader>ev to edit your VIMRC file
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -183,12 +183,10 @@ nnoremap <leader>sv :source $MYVIMRC<cr>
 " Sets <esc> to exit terminal mode in neovim
 if has('nvim')
     tnoremap <Esc> <C-\><C-n>
+else
+    cnoremap <Esc> <C-\><C-n>
 endif
 
-" Set quick motions for altering interiors of parenths, brackets, and curly braces
-onoremap ( i(
-onoremap [ i[
-onoremap { i{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""ABBREVIATIONS""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -202,3 +200,9 @@ iabbrev calss class
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""TESTING"""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Set quick motions for altering interiors of parenths, brackets, and curly braces
+onoremap ( i(
+onoremap [ i[
+onoremap { i{
+
+" TODO: Set quick motion for moving to next/prev buffer
