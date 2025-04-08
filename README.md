@@ -23,11 +23,10 @@ Usage
 ### Base Machine
 
 1. Clone this repo to ~/config. Note that for `stow` to place the symlinks in the correct places, you MUST clone the repo into your home directory.
-2. Modify system's ssh configuration (/etc/ssh/ssh_config), uncomment "Host \*", and set "PermitLocalCommand yes" within it.
-3. Copy ssh/.ssh/localconfig.template to ssh/.ssh/localconfig and fill it out appropriately. Note that your local version of the file will _not_ be under version control.
-4. Do the same for ssh/.ssh/configcopy.sh.template, copying it to ssh/.ssh/configcopy.sh and adjusting it to your needs. Note that your local version of the file will _not_ be under version control.
-5. `mkdir ~/.ssh/controlmasters` to create the expected directory to store the ssh sockets for re-use.
-6. `cd` into the repo and run `stow [subdir]` for each set of configuration files you want symlinked to. You will want at least the ssh configs.
+2. Copy ssh/.ssh/localconfig.template to ssh/.ssh/localconfig and fill it out appropriately. Note that your local version of the file will _not_ be under version control.
+3. Do the same for ssh/.ssh/configcopy.sh.template, copying it to ssh/.ssh/configcopy.sh and adjusting it to your needs. Note that your local version of the file will _not_ be under version control.
+4. `mkdir ~/.ssh/controlmasters` to create the expected directory to store the ssh sockets for re-use.
+5. `cd` into the repo and run `stow [subdir]` for each set of configuration files you want symlinked to. You will want at least the ssh configs.
 
 ### Remote Machine
 
