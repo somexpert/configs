@@ -1,3 +1,6 @@
+# Filename: localconfig
+# Directory: ~/.ssh/
+
 # This is a template for a local ssh configuration file including forwarding configs to other machines when ssh-ing over to them.
 # Replace AT LEAST all bracketed values
 
@@ -12,7 +15,7 @@ Match user [username]
 	PermitLocalCommand yes
 	LocalCommand "%d/.ssh/configcopy.sh" "%h" "%d/.ssh/controlmasters/%r@%h:%p"
 	# Sleep to allow files to be synced before shell is started so it can source the new ones
-	RemoteCommand sleep 0.5;exec $SHELL
+	RemoteCommand sleep 0.5;exec $SHELL # TODO: Can we _remove_ the configs after the shell is exited???
 	# Provide the interactive terminal, which isn't usually available for remote commands
 	RequestTTY yes
 

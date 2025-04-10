@@ -1,2 +1,2 @@
-ssh/.ssh/localconfig
-ssh/.ssh/configcopy.sh
+configs/ssh_localconfig
+configs/copyconfigs.sh

@@ -1,3 +1,6 @@
+# Filename: .gitconfig
+# Directory: ~/
+
 [user]
 	name = Gio Gottardi
 	email = manuelgottardi@unt.edu

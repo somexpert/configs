@@ -1,4 +1,6 @@
-# .bashrc
+# Filename: .bashrc
+# Directory: ~/
+
 # Source bash_aliases
 if [ -f ~/.bash_aliases ]; then
         . ~/.bash_aliases

@@ -1,4 +1,5 @@
-# Bash aliases
+# Filename: .bash_aliases
+# Directory: ~/
 
 alias sudo='sudo '
 alias ssh-start='eval "$(ssh-agent)" ; ssh-add'

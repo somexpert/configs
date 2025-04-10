@@ -1,0 +1,5 @@
+# Filename: flake8
+# Directory: ~/.config/
+
+[flake8]
+max-line-length = 99

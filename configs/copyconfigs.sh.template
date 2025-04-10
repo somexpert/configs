@@ -1,5 +1,9 @@
+# Filename: copyconfigs.sh
+# Directory: ~/.ssh/
+
+# TODO: Grab file list  from iterating over configs dir and looking at headers.
 # Copy over bash aliases (add whatever other files you want to copy as additional commands after this one)
-for CONFIG in [path_to_config_1] [path_to_config_2] [patch_to_config_3] ;
+for CONFIG in [config_file_list] ;
  do scp -o ControlPath=$2 $CONFIG $1:$CONFIG &> ~/.ssh/configcopy_out.txt &
 done
 # Leave some time before saying the configs have been copied over, since the transfers are backgrounded

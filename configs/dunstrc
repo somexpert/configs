@@ -1,3 +1,6 @@
+# Filename: dunstrc
+# Directory: ~/.config/dunst/
+
 [global]
     font = "Monospace 8"
     allow_markup = yes
