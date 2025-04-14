@@ -1,4 +1,4 @@
-# Filename: init.vim
-# Directory: ~/.config/nvim/
+"# Filename: init.vim
+"# Directory: ~/.config/nvim/
 
 source ~/.vim/vimrc
