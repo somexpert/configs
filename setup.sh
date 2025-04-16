@@ -17,6 +17,7 @@ if [[ "$SYMLINK_CONSENT" == "y" ]]; then
 	do
 		if [[ ! $CONFIG_FILE == *".template" ]]; then
 			# Get filename and directory from file headers
+			# TODO: make those lines more robust and less prone to errors
 			FILENAME=$(grep "# Filename: " $CONFIG_FILE | cut -d ' ' -f 3)
 			DIR_STRING=$(grep "# Directory: " $CONFIG_FILE | cut -d ' ' -f 3)
 			# Manually expand the tilde to the home directory
