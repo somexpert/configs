@@ -1,6 +1,11 @@
 # Filename: .bashrc
 # Directory: ~/
 
+# Source bashrc_local
+if [ -f ~/.bashrc_local ]; then
+        . ~/.bashrc_local
+fi
+
 # Source bash_aliases
 if [ -f ~/.bash_aliases ]; then
         . ~/.bash_aliases

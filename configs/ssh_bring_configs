@@ -1,4 +1,4 @@
-# Filname: bring_configs
+# Filename: bring_configs
 # Directory: ~/.ssh/
 
 # Reuse sockets to be able to copy over files with scp without any re-authentication
