@@ -17,12 +17,16 @@ Usage
 
 ### Base Machine
 
-TODO: update this
-1. Clone this repo to ~/config. Note that for `stow` to place the symlinks in the correct places, you MUST clone the repo into your home directory.
-2. Copy ssh/.ssh/localconfig.template to ssh/.ssh/localconfig and fill it out appropriately. Note that your local version of the file will _not_ be under version control.
-3. Do the same for ssh/.ssh/configcopy.sh.template, copying it to ssh/.ssh/configcopy.sh and adjusting it to your needs. Note that your local version of the file will _not_ be under version control.
-4. `mkdir ~/.ssh/controlmasters` to create the expected directory to store the ssh sockets for re-use.
-5. `cd` into the repo and run `stow [subdir]` for each set of configuration files you want symlinked to. You will want at least the ssh configs.
+1. Clone this repo to a location of your choosing on your base machine.
+2. Optionally, remove configs that don't apply to you and add missing ones that do. The only requirement for them to get
+   symlinked automatically by the setup script (next step) is for them to have two commented lines showing the intended
+   destination filename and containing directory. They _must_ have the expected structure, shown below, even if you must
+   prepend a different comment character before the hash.
+   ex. "# Filename: [filename]"
+       "# Directory: [dir]"
+3. Run the setup.sh script. Note: the script can be run multiple times if needed, such as after adding a new config file.
+4. Optionally, adjust which configuration files you want to be synced, and when/where, by modifying the
+   configs_to_copy.txt and ssh_localconfig files, respectively.
 
 ### Remote Machine
 

@@ -1,27 +1,10 @@
 # Filename: localconfig
 # Directory: ~/.ssh/
 
-# This is a template for a local ssh configuration file including forwarding configs to other machines when ssh-ing over to them.
-# Replace AT LEAST all bracketed values
+# Adjust the Match directive to limit when syncing happens. Any section that "Include"s bring_configs will
+# sync the configuration files defined in configs_to_sync.sh to the remote server.
+Match *
+	Include bring_configs
 
-# Copy configs over scp when ssh-ing to them as this machine's user
-Match user [username]
-	# Reuse sockets to be able to copy over files with scp without any re-authentication
-	# Make sure to manually create the controlmasters subdirectory
-	ControlMaster auto
-	ControlPath %d/.ssh/controlmasters/%r@%h:%p
-	ControlPersist 60s
-	# Run the script which copies over all desired files to the server, re-using the socket
-	PermitLocalCommand yes
-	LocalCommand "%d/.ssh/configcopy.sh" "%h" "%d/.ssh/controlmasters/%r@%h:%p"
-	# Sleep to allow files to be synced before shell is started so it can source the new ones
-	RemoteCommand sleep 0.5;exec $SHELL # TODO: Can we _remove_ the configs after the shell is exited???
-	# Provide the interactive terminal, which isn't usually available for remote commands
-	RequestTTY yes
-
-# Additional configuration specific to this machine
-#Host *.[domain nickname]
-	#User [username]
-	#Hostname [long domain]
-#Host [nickname]
-	#Hostname [IP]
+# You can also add any other local-only configuration sections in this file (the copy, not the template)
+# as it is not tracked in the git repo.

@@ -1,0 +1,6 @@
+# Filename: configs_to_sync.txt
+# Directory: ~/.ssh/
+
+~/.bashrc
+~/.bash_aliases
+~/.vim/vimrc
