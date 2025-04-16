@@ -10,6 +10,8 @@ if ! [[ -f configs/ssh_localconfig ]]; then
 		cp configs/ssh_localconfig.template > configs/ssh_localconfig
 	fi
 fi
+# Set the right permissions on the ssh config files so ssh doesn't throw errors about the configs
+chmod go-rw configs/ssh_*
 # Symlink the files (creating backups if needed) if the user wants
 read -p "Create symlinks for configs? (y/n): " SYMLINK_CONSENT
 if [[ "$SYMLINK_CONSENT" == "y" ]]; then
