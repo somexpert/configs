@@ -8,7 +8,7 @@ while read CONFIG; do
 	# TODO: solve issue of missing parent directories on remote.
 	scp -o ControlPath=$2 $EXPANDED_CONFIG_PATH $1:$CONFIG &>> ~/.ssh/copyconfigs_out.txt &
   fi
-done < configs_to_sync.txt
+done < ./configs_to_sync.txt
 # Leave some time before saying the configs have been copied over, since the transfers are backgrounded
 sleep 0.2
 echo "Configs copied over via scp on shared socket."
