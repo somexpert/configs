@@ -7,3 +7,7 @@ Host *
 	ServerAliveInterval 60
 	ServerAliveCountMax 60
 	TCPKeepAlive yes
+	# Reuse sockets (necessary for copying over configs without re-authenticating, and helpful generally)
+	ControlMaster auto
+	ControlPath %d/.ssh/controlmasters/%r@%h:%p
+	ControlPersist 60s

@@ -1,10 +1,6 @@
 # Filename: bring_configs
 # Directory: ~/.ssh/
 
-# Reuse sockets to be able to copy over files with scp without any re-authentication
-ControlMaster auto
-ControlPath %d/.ssh/controlmasters/%r@%h:%p
-ControlPersist 60s
 # Run the script which copies over all desired files to the server, re-using the socket
 PermitLocalCommand yes
 LocalCommand "%d/.ssh/copyconfigs.sh" "%h" "%d/.ssh/controlmasters/%r@%h:%p"

@@ -3,7 +3,7 @@
 
 # Adjust the Match directive to limit when syncing happens. Any section that "Include"s bring_configs will
 # sync the configuration files defined in configs_to_sync.sh to the remote server.
-Match *
+Match tagged copyconf
 	Include bring_configs
 
 # You can also add any other local-only configuration sections in this file (the copy, not the template)
